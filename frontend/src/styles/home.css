@@ -1,19 +1,17 @@
 .home-container {
     text-align: center;
     margin-top: 50px;
-  }
-  
-  button {
-    background-color: #4CAF50;
+}
+
+.start-btn {
+    background-color: #4caf50;
     color: white;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
     font-size: 18px;
-    border-radius: 5px;
-  }
-  
-  button:hover {
+}
+
+.start-btn:hover {
     background-color: #45a049;
-  }
-  
+}

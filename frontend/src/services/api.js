@@ -1,12 +1,12 @@
-const API_URL = "http://localhost:5000"; // Ajusta si es necesario
-
-export const getWords = async () => {
-  try {
-    const response = await fetch(`${API_URL}/palabra`);
-    if (!response.ok) throw new Error("Error al obtener las palabras");
-    return await response.json();
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
+export const fetchWord = async () => {
+    try {
+        const response = await fetch("http://127.0.0.1:5000/palabra");
+        if (!response.ok) {
+            throw new Error("Error en la solicitud");
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Error al obtener palabra:", error);
+        return null;
+    }
 };
