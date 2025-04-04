@@ -1,36 +1,88 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/Login.css";
+import AuthForm from "../components/AuthForm";
+import "./../styles/Login.css";
 
-const Login = () => {
-  const [isRegister, setIsRegister] = useState(false);
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-
+const Login: React.FC = () => {
+  const [isRegistering, setIsRegistering] = useState(false);
+  const [formData, setFormData] = useState({ nombre: "", email: "", password: "", confirmPassword: "" });
+  const [passwordError, setPasswordError] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!isRegistering) {
+      setFormData({ nombre: "", email: "", password: "", confirmPassword: "" });
+    }
+  }, [isRegistering]);
+
+  const validatePassword = (password: string) => {
+    const minLength = /.{8,}/;
+    const hasUpperCase = /[A-Z]/;
+    const hasLowerCase = /[a-z]/;
+    const hasSymbol = /[\W_]/;
+
+    if (!minLength.test(password)) setPasswordError("Debe tener al menos 8 caracteres.");
+    else if (!hasUpperCase.test(password)) setPasswordError("Debe contener al menos una mayúscula.");
+    else if (!hasLowerCase.test(password)) setPasswordError("Debe contener al menos una minúscula.");
+    else if (!hasSymbol.test(password)) setPasswordError("Debe contener al menos un símbolo.");
+    else setPasswordError("");
+  };
+
+  const validateConfirmPassword = (confirmPassword: string) => {
+    if (confirmPassword !== formData.password) {
+      setConfirmPasswordError("Las contraseñas no coinciden.");
+    } else {
+      setConfirmPasswordError("");
+    }
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+    if (name === "password") {
+      validatePassword(value);
+      if (formData.confirmPassword) validateConfirmPassword(formData.confirmPassword);
+    }
+
+    if (name === "confirmPassword") {
+      validateConfirmPassword(value);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const url = isRegister ? "http://localhost:5000/register" : "http://localhost:5000/login";
-    
+
+    if (isRegistering && (passwordError || confirmPasswordError)) {
+      alert("Corrige los errores de la contraseña antes de continuar.");
+      return;
+    }
+
+    const url = isRegistering ? "http://localhost:5000/register" : "http://localhost:5000/login";
+    const payload = isRegistering
+      ? { nombre: formData.nombre, email: formData.email, password: formData.password }
+      : { email: formData.email, password: formData.password };
+
     try {
       const response = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
-      
+
       const data = await response.json();
-      alert(data.message);
+      alert(data.mensaje || data.error || "Ocurrió un error");
+
       if (response.ok) {
-        navigate("/dashboard"); // Redirige a otra página después del login
+        if (isRegistering) {
+          console.log("Registro exitoso, redirigiendo al login...");
+          setIsRegistering(false);
+          navigate("/login", { replace: true });
+        } else {
+          console.log("Login exitoso, redirigiendo...");
+          navigate("/");
+        }
       }
     } catch (error) {
       console.error("Error:", error);
@@ -38,20 +90,15 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <h2>{isRegister ? "Register" : "Login"}</h2>
-      <form onSubmit={handleSubmit}>
-        {isRegister && (
-          <input type="text" name="username" placeholder="Username" onChange={handleChange} required />
-        )}
-        <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-        <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
-        <button type="submit">{isRegister ? "Register" : "Login"}</button>
-      </form>
-      <p onClick={() => setIsRegister(!isRegister)}>
-        {isRegister ? "Already have an account? Login" : "Don't have an account? Register"}
-      </p>
-    </div>
+    <AuthForm
+      isRegistering={isRegistering}
+      formData={formData}
+      passwordError={passwordError}
+      confirmPasswordError={confirmPasswordError}
+      handleChange={handleChange}
+      handleSubmit={handleSubmit}
+      toggleRegister={() => setIsRegistering(!isRegistering)}
+    />
   );
 };
 

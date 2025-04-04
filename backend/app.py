@@ -10,8 +10,11 @@ CORS(app)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///english.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
+
+
 # Inicializar la base de datos con Flask
 db.init_app(app)
+
 
 # Registrar los blueprints (rutas)
 app.register_blueprint(api_bp)

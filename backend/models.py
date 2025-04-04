@@ -1,7 +1,7 @@
 from database import db
 from datetime import datetime
 from sqlalchemy import Enum
-
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 class Palabra(db.Model):
@@ -22,8 +22,20 @@ class Usuario(db.Model):
     
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(50), nullable=False, unique=True)
-    
+    email = db.Column(db.String(100), nullable=False, unique=True)  # 🔹 Nuevo campo
+    password_hash = db.Column(db.String(255), nullable=False) # 🔹 Nuevo campo
     respuestas = db.relationship("Respuesta", backref="usuario", lazy=True)
+
+    def __repr__(self):
+        return f"<Usuario {self.nombre}>"
+    
+    def set_password(self, password):
+            """Genera el hash de la contraseña y lo almacena."""
+            self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+            """Verifica si la contraseña ingresada es correcta."""
+            return check_password_hash(self.password_hash, password)
 
     def __repr__(self):
         return f"<Usuario {self.nombre}>"

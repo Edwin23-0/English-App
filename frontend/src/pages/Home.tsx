@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import "./../styles/Home.css";
-import logo from "./../assets/logo.svg";
+import Lottie from "lottie-react";
+import englishAnimation from "../assets/animation.json"; // Asegúrate de tener esta animación
 
 const Home: React.FC = () => {
     return (
@@ -7,18 +9,24 @@ const Home: React.FC = () => {
             <nav className="navbar">
                 <div className="logo">English App</div>
                 <div className="nav-links">
-                    <a href="#">Docs</a>
-                    <a href="#">Forum</a>
-                    <a href="#">Login</a>
+                    <Link to="/docs">Docs</Link>
+                    <Link to="/forum">Forum</Link>
+                    <Link to="/login">Login</Link>
                 </div>
             </nav>
             <div className="content">
                 <div className="text-section">
                     <h1>Learning is easier with <span className="highlight">English App</span></h1>
                     <p>Improve your vocabulary with our intelligent spaced repetition system.</p>
-                    <button className="start-btn">Start Learning</button>
+                    <Link to="/learning">
+                        <button className="start-btn">Start Learning</button>
+                    </Link>
                 </div>
-                <img src={logo} alt="App Logo" className="app-logo" />
+                <div className="app-logo">
+                    <div className="lottie-wrapper">
+                        <Lottie animationData={englishAnimation} loop={true} />
+                    </div>
+                </div>
             </div>
         </div>
     );

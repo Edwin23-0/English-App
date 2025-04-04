@@ -18,10 +18,28 @@ body {
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: bold;
+/* Animación para la animación Lottie */
+.lottie-wrapper {
+    animation: float 3s ease-in-out infinite;
+    transition: transform 0.3s ease;
+    display: inline-block; /* Necesario para que el hover funcione bien */
+    padding: 10px;          /* Opcional: da más espacio para detectar hover */
+    border-radius: 20px;    /* Opcional: da un look más suave */
 }
+
+/* Efecto hover directo sobre lottie-wrapper */
+.lottie-wrapper:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15); /* Efecto visual */
+}
+
+/* Animación de flotación */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
 
 .nav-links {
     display: flex;
