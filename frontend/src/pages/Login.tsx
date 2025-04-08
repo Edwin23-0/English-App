@@ -81,6 +81,10 @@ const Login: React.FC = () => {
           navigate("/login", { replace: true });
         } else {
           console.log("Login exitoso, redirigiendo...");
+
+          // Guardamos el usuario en localStorage
+          localStorage.setItem("user", JSON.stringify({ nombre: data.usuario })); 
+
           navigate("/");
         }
       }

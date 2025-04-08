@@ -6,6 +6,8 @@ from routes import api_bp
 app = Flask(__name__)
 CORS(app)
 
+
+
 # Configuración de la base de datos
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///english.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
