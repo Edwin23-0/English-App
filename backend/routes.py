@@ -4,7 +4,6 @@ from models import Palabra, Usuario, Respuesta
 import re
 from datetime import datetime, timedelta
 from sqlalchemy.orm import joinedload
-import jwt 
 
 api_bp = Blueprint("api", __name__)
 

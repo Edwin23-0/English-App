@@ -1,95 +1,95 @@
+/* ------------------------------------ */
+/*           ESTILOS GENERALES         */
+/* ------------------------------------ */
+
 body { 
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
 }
+
 .overlay {
-    
-    background-color:rgba(255, 255, 255, 0.4); /* Blanco con 80% opacidad */
+    background-color: rgba(255, 255, 255, 0.4); /* Fondo blanco con opacidad */
     width: 100%;
     min-height: 100vh;
     padding: 0;
-    
-  }
-
-.home-container {
-    text-align: center;
-    padding: 50px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    position: relative;
-    min-height: 100vh;
-    width: 100%;
-    background-image: url('/fondo.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
 }
 
+/* ------------------------------------ */
+/*              NAVBAR                 */
+/* ------------------------------------ */
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1200px;
-    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 1000;
+    padding: 20px 40px;
     background: white;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    align-items: center; /* Asegura que todos los elementos estén centrados verticalmente */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-
-.lottie-wrapper {
-    animation: float 3s ease-in-out infinite;
-    transition: transform 0.3s ease;
-    padding: 10px;
-    border-radius: 20px;
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
 }
 
-.lottie-wrapper:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+.logo-with-image {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    gap: 0.5rem;
+    color: inherit;
+    transition: transform 0.2s ease;
 }
 
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
+.logo-with-image:hover {
+    transform: scale(1.05);
 }
 
-/* Enlaces login,forum y docs*/
+.navbar-logo {
+    height: 40px;
+    width: auto;
+}
+
+/* ------------------------------------ */
+/*          NAVBAR LINKS               */
+/* ------------------------------------ */
+
 .nav-links {
     display: flex;
     align-items: center;
     gap: 25px;
     font-size: 18px;
     font-weight: bold;
-    min-width: 300px; /* Ajusta este valor según el contenido */
+    min-width: 300px;
     justify-content: flex-end;
-    align-items: center; /* Centra los elementos verticalmente */
+    padding-right: 70px;
 }
 
 .nav-links a {
     text-decoration: none;
     color: #333;
     transition: color 0.3s ease;
-    position: relative; /* Necesario para la línea azul */
+    position: relative;
 }
 
 .nav-links a:hover {
     color: #007bff;
 }
 
-/* Línea azul animada debajo de los enlaces login,forum y docs*/
+/* Línea azul animada debajo de los enlaces */
 .nav-links a::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -3px; /* Ajusta la posición de la línea */
+    bottom: -3px;
     width: 0;
     height: 2px;
     background-color: #007bff;
@@ -100,6 +100,26 @@ body {
     width: 100%;
 }
 
+/* ------------------------------------ */
+/*             HOME PAGE               */
+/* ------------------------------------ */
+
+.home-container {
+    padding-top: 100px;
+    text-align: center;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(to right, #f0f4ff, #e6f0ff); /* Degradado suave */
+}
+
+/* ------------------------------------ */
+/*        SECCIÓN CONTENIDO CENTRAL    */
+/* ------------------------------------ */
 
 .content {
     display: flex;
@@ -116,58 +136,75 @@ body {
 }
 
 .text-section h1 {
-    font-size: 70px; /* Tamaño aumentado */
-    font-weight: bold; /* Letra más gruesa */
+    font-size: 70px;
+    font-weight: bold;
     text-align: center;
-    line-height: 1.2; /* Espaciado mejorado */
+    line-height: 1.2;
 }
+
 .text-section p {
-    text-decoration: none; /* Quita el subrayado si es un enlace */
-    color: black; /* Color negro */
-    font-weight: bold; /* Hace la letra más gruesa */
-    font-size: 20px; /* Tamaño adecuado */
-    text-align: left; /* Mantener alineación a la izquierda */
-    margin-left: 10px; /* Mover ligeramente a la derecha */
-    margin-top: 10px; /* Espacio con el título */
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: left;
+    margin-left: 10px;
+    margin-top: 10px;
 }
 
-
+/* Palabras destacadas */
 .highlight {
     color: #007bff;
     font-weight: bold;
 }
 
+/* Botón principal */
 .start-btn {
     background-color: #007bff;
     border: none;
     padding: 25px 35px;
     color: white;
     font-size: 23px;
-    font-weight: bold; /* Hace la letra más gruesa */
+    font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s ease;
-    margin-left: 10px; /* Ajusta este valor para mover más a la derecha */
-   
+    margin-left: 10px;
 }
 
 .start-btn:hover {
     background-color: #0056b3;
-    transform: scale(1.1); /* Efecto de crecimiento al pasar el mouse */
+    transform: scale(1.1);
 }
 
-.logo {
-    font-size: 20px; /* Aumenta el tamaño */
-    font-weight: bold; /* Hace la letra más gruesa */
-    color: #333; /* Asegura que tenga buen contraste */
+/* Imagen animada (Lottie u otra) */
+.lottie-wrapper {
+    animation: float 3s ease-in-out infinite;
+    transition: transform 0.3s ease;
+    padding: 10px;
+    border-radius: 20px;
 }
 
+.lottie-wrapper:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Animación de flotar */
+@keyframes float {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Logo lateral o decorativo */
 .app-logo {
     width: 400px;
     margin-left: 50px;
 }
 
-
+/* ------------------------------------ */
+/*           USUARIO LOGUEADO          */
+/* ------------------------------------ */
 
 .user-section {
     display: flex;
@@ -198,66 +235,46 @@ body {
     text-decoration: underline;
 }
 
+/* ------------------------------------ */
+/*     SECCIÓN DE BENEFICIOS (2da Parte)*/
+/* ------------------------------------ */
 
-.logo-with-image {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    cursor: pointer;
-    gap: 0.5rem;
-    color: inherit;
-    transition: transform 0.2s ease;
-}
-
-.logo-with-image:hover {
-    transform: scale(1.05);
-}
-
-.navbar-logo {
-    height: 40px;
-    width: auto;
-}
-
-/* Diseño second part*/
-/* segunda parte home */
 .benefits {
-    margin-top: 5rem; /* <- Este es el nuevo espacio */
+    margin-top: 5rem;
     padding: 4rem 2rem;
     background-color: #f5f5f5;
     text-align: center;
-  }
-  
-  .benefits h2 {
+}
+
+.benefits h2 {
     font-size: 3rem;
     margin-bottom: 3rem;
-  }
-  
-  .benefitCards {
+}
+
+.benefitCards {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
-    margin-bottom: 3rem; /* separa las filas */
-  }
-  
-  
-  .card {
+    margin-bottom: 3rem;
+}
+
+.card {
     background: white;
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 250px;
     transition: transform 0.3s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-8px);
-  }
-  
+}
 
-  .icon {
-    width: 50px;  /* Ajusta el tamaño del icono */
-    height: 50px; /* Ajusta el tamaño del icono */
-    margin-right: 10px; /* Espacio entre el icono y el texto */
-  }
-  
+.card:hover {
+    transform: translateY(-8px);
+}
+
+/* Íconos dentro de las tarjetas */
+.icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
