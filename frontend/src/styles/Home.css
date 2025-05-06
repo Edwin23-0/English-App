@@ -1,8 +1,8 @@
 /* ------------------------------------ */
-/*           ESTILOS GENERALES         */
+/* ESTILOS GENERALES                    */
 /* ------------------------------------ */
 
-body { 
+body {
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
@@ -13,17 +13,22 @@ body {
     width: 100%;
     min-height: 100vh;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
 }
 
 /* ------------------------------------ */
-/*              NAVBAR                 */
+/* NAVBAR                         */
 /* ------------------------------------ */
 
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     z-index: 1000;
     padding: 20px 40px;
     background: white;
@@ -31,6 +36,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .logo {
@@ -59,7 +65,7 @@ body {
 }
 
 /* ------------------------------------ */
-/*          NAVBAR LINKS               */
+/* NAVBAR LINKS                     */
 /* ------------------------------------ */
 
 .nav-links {
@@ -101,7 +107,7 @@ body {
 }
 
 /* ------------------------------------ */
-/*             HOME PAGE               */
+/* HOME PAGE                       */
 /* ------------------------------------ */
 
 .home-container {
@@ -115,30 +121,38 @@ body {
     min-height: 100vh;
     width: 100%;
     background: linear-gradient(to right, #f0f4ff, #e6f0ff); /* Degradado suave */
+    box-sizing: border-box;
 }
 
 /* ------------------------------------ */
-/*        SECCIÓN CONTENIDO CENTRAL    */
+/* SECCIÓN CONTENIDO CENTRAL                */
 /* ------------------------------------ */
 
 .content {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Centra los elementos hijos horizontalmente */
     align-items: center;
     margin-top: 50px;
     flex-wrap: wrap;
     max-width: 1200px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    padding: 0 20px;
 }
 
 .text-section {
     max-width: 600px;
     text-align: left;
+    flex: 1;
+    margin-right: 20px;
 }
 
 .text-section h1 {
     font-size: 70px;
     font-weight: bold;
-    text-align: center;
+    text-align: left; /* Alinea el título a la izquierda en la sección de texto */
     line-height: 1.2;
 }
 
@@ -147,7 +161,7 @@ body {
     font-weight: bold;
     font-size: 20px;
     text-align: left;
-    margin-left: 10px;
+    margin-left: 0; /* Elimina el margen izquierdo */
     margin-top: 10px;
 }
 
@@ -167,8 +181,10 @@ body {
     font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s ease;
-    margin-left: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-left: 0; /* Elimina el margen izquierdo */
+    margin-top: 20px;
+    display: inline-block; /* Para que el margin-left no cause problemas si está solo */
 }
 
 .start-btn:hover {
@@ -179,7 +195,7 @@ body {
 /* Imagen animada (Lottie u otra) */
 .lottie-wrapper {
     animation: float 3s ease-in-out infinite;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     padding: 10px;
     border-radius: 20px;
 }
@@ -198,12 +214,47 @@ body {
 
 /* Logo lateral o decorativo */
 .app-logo {
-    width: 400px;
-    margin-left: 50px;
+    width: auto;
+    max-width: 400px;
+    flex: 1;
+    margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+    .text-section,
+    .app-logo {
+        margin-right: 0;
+        margin-left: 0;
+        margin-bottom: 30px;
+        width: 100%;
+        max-width: none;
+        text-align: center; /* Centra el texto en pantallas pequeñas */
+    }
+
+    .text-section h1 {
+        text-align: center; /* Asegura que el título también esté centrado */
+        font-size: 50px; /* Reduce el tamaño del título en pantallas pequeñas */
+    }
+
+    .text-section p {
+        text-align: center; /* Centra la descripción en pantallas pequeñas */
+        font-size: 18px; /* Reduce el tamaño de la descripción en pantallas pequeñas */
+    }
+
+    .start-btn {
+        font-size: 20px; /* Reduce el tamaño del botón en pantallas pequeñas */
+        padding: 20px 30px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .app-logo {
+        margin-top: 30px; /* Añade espacio entre texto e imagen en pantallas pequeñas */
+    }
 }
 
 /* ------------------------------------ */
-/*           USUARIO LOGUEADO          */
+/* USUARIO LOGUEADO            */
 /* ------------------------------------ */
 
 .user-section {
@@ -236,7 +287,7 @@ body {
 }
 
 /* ------------------------------------ */
-/*     SECCIÓN DE BENEFICIOS (2da Parte)*/
+/* SECCIÓN DE BENEFICIOS (2da Parte)      */
 /* ------------------------------------ */
 
 .benefits {
@@ -277,4 +328,191 @@ body {
     width: 50px;
     height: 50px;
     margin-right: 10px;
+}
+
+/* ------------------------------------ */
+/* SECCIÓN: Repetición Espaciada         */
+/* ------------------------------------ */
+
+.spaced-repetition-explanation {
+    padding: 4rem 2rem;
+    background-color: #f9f9f9; /* Un tono ligeramente más claro que el fondo de beneficios */
+    text-align: center;
+}
+
+.spaced-repetition-container {
+    max-width: 1200px; /* Mantener el ancho máximo consistente */
+    margin: 0 auto;
+    padding: 0 20px; /* Añadir padding lateral para pantallas pequeñas */
+}
+
+.spaced-repetition-container h2 {
+    font-size: 3rem; /* Mismo tamaño que el título de beneficios */
+    color: #333; /* Mismo color que el logo y otros títulos */
+    margin-bottom: 2rem;
+    font-weight: bold; /* Mismo peso que otros títulos */
+}
+
+.spaced-repetition-container p {
+    color: black; /* Mismo color que el texto principal de la sección central */
+    font-size: 20px; /* Mismo tamaño que el texto principal de la sección central */
+    line-height: 1.6; /* Ajuste de interlineado para legibilidad */
+    margin-bottom: 1.5rem;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px; /* Limitar el ancho del texto para mejor lectura */
+}
+
+.spaced-repetition-benefits {
+    background-color: white;
+    padding: 2rem; /* Mismo padding que las tarjetas de beneficios */
+    border-radius: 12px; /* Mismo radio de borde que las tarjetas de beneficios */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Misma sombra que las tarjetas de beneficios */
+    margin-bottom: 1.5rem;
+    text-align: left;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.spaced-repetition-benefits h3 {
+    font-size: 2rem; /* Un poco más pequeño que el título principal de la sección */
+    color: #333; /* Mismo color que otros subtítulos */
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.spaced-repetition-benefits ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.spaced-repetition-benefits li {
+    color: black; /* Mismo color que el texto principal */
+    font-size: 20px; /* Mismo tamaño que el texto principal */
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    font-weight: bold; /* Destacar los beneficios */
+}
+
+/* ------------------------------------ */
+/* FOOTER                             */
+/* ------------------------------------ */
+
+.footer {
+    background-color: #333; /* Mismo color de texto principal pero invertido */
+    color: white;
+    padding: 40px 20px;
+    font-size: 16px; /* Un poco más pequeño que el texto principal */
+    line-height: 1.6;
+    text-align: center;
+    width: 100%; /* Asegúrate de que el footer ocupe todo el ancho de su contenedor */
+    box-sizing: border-box; /* Para que el padding no afecte el ancho total */
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px; /* Mantener el ancho máximo consistente */
+    margin: 0 auto;
+    padding-bottom: 30px;
+    box-sizing: border-box; /* Asegúrate de que el padding no afecte el ancho total */
+}
+
+.footer-logo-section,
+.footer-links-section,
+.footer-legal-section,
+.footer-social-section {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+@media (min-width: 768px) {
+    .footer-logo-section,
+    .footer-links-section,
+    .footer-legal-section,
+    .footer-social-section {
+        margin-bottom: 0;
+    }
+}
+
+.footer-logo-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Mismo gap que el logo principal */
+}
+
+.footer-navbar-logo {
+    height: 30px; /* Ajustar tamaño del logo en el footer */
+    width: auto;
+}
+
+.footer-section-title {
+    font-size: 18px; /* Mismo tamaño que los links de la navbar */
+    font-weight: bold;
+    color: white; /* Texto blanco para el fondo oscuro */
+    margin-bottom: 10px;
+}
+
+.footer-links-section a,
+.footer-legal-section a,
+.footer-social-section a {
+    display: block;
+    color: #ccc; /* Un gris claro para los links */
+    text-decoration: none;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.footer-links-section a:hover,
+.footer-legal-section a:hover,
+.footer-social-section a:hover {
+    color: #007bff; /* Mismo color de hover que los links de la navbar */
+}
+
+.footer-social-section a {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.footer-social-section a:last-child {
+    margin-right: 0;
+}
+
+.footer-copyright {
+    border-top: 1px solid #555;
+    padding-top: 20px;
+    text-align: center;
+    width: 100%; /* Asegúrate de que la sección de copyright también ocupe todo el ancho */
+    box-sizing: border-box; /* Para que el padding no afecte el ancho total */
+}
+
+.footer-copyright p {
+    margin: 0;
+    color: #aaa;
+    font-size: 16px; /* Mismo tamaño que el texto del footer */
+}
+
+/* Media query para pantallas más grandes para alinear mejor las secciones */
+@media (min-width: 992px) {
+    .footer-content {
+        justify-content: space-between;
+    }
+
+    .footer-logo-section,
+    .footer-links-section,
+    .footer-legal-section,
+    .footer-social-section {
+        text-align: left;
+        width: auto;
+    }
+
+    .footer-links-section,
+    .footer-legal-section,
+    .footer-social-section {
+        min-width: 150px;
+    }
 }

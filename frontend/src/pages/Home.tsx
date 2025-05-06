@@ -121,6 +121,75 @@ const Home: React.FC = () => {
             </div>
           </div>
         </section>
+
+        {/* ================================================================== */}
+        {/* NUEVA SECCIÓN: Explicación de Repetición Espaciada                 */}
+        {/* ================================================================== */}
+        <section className="spaced-repetition-explanation" data-aos="fade-up">
+          <div className="spaced-repetition-container">
+            <h2>¿Qué es la Repetición Espaciada?</h2>
+            <p>
+              La <span className="highlight">repetición espaciada</span> es una técnica de aprendizaje basada en la evidencia que incrementa los intervalos de tiempo entre las revisiones posteriores del material aprendido previamente para explotar el efecto de espaciado.
+            </p>
+            <p>
+              En lugar de repasar la información una y otra vez en un corto período de tiempo, la repetición espaciada programa las revisiones en intervalos crecientes. Esto aprovecha la forma en que nuestra memoria funciona naturalmente, fortaleciendo las conexiones neuronales cada vez que recordamos la información con éxito después de un intervalo más largo.
+            </p>
+            <div className="spaced-repetition-benefits">
+              <h3>Beneficios Clave:</h3>
+              <ul>
+                <li>
+                  <span className="highlight">Mayor Retención:</span> Recuerda la información por más tiempo.
+                </li>
+                <li>
+                  <span className="highlight">Aprendizaje Eficiente:</span> Dedica tu tiempo a repasar lo que realmente necesitas recordar.
+                </li>
+                <li>
+                  <span className="highlight">Menos Agotamiento:</span> Las sesiones de estudio son más cortas y efectivas.
+                </li>
+                <li>
+                  <span className="highlight">Comprensión Profunda:</span> Al forzar la recuperación de la memoria, se fortalece la comprensión.
+                </li>
+              </ul>
+            </div>
+            <p>
+              <span className="highlight">English Web</span> utiliza un algoritmo inteligente de repetición espaciada para optimizar tus sesiones de aprendizaje de vocabulario, asegurando que repases las palabras justo en el momento adecuado para una máxima retención.
+            </p>
+          </div>
+        </section>
+
+        {/* ================================================================== */}
+        {/* Pie de Página (Footer) - (El que ya habíamos creado)             */}
+        {/* ================================================================== */}
+        <footer className="footer" data-aos="fade-up">
+          <div className="footer-content">
+            <section className="footer-logo-section">
+              <img src={logoImg} alt="English Web Logo" className="footer-navbar-logo" />
+              <span>English Web</span>
+            </section>
+            <section className="footer-links-section">
+              <h3 className="footer-section-title">Navegación</h3>
+              <Link to="/learning">Empezar a Aprender</Link>
+              <Link to="/docs">Documentación</Link>
+              <Link to="/forum">Foro</Link>
+            </section>
+            <section className="footer-legal-section">
+              <h3 className="footer-section-title">Legal</h3>
+              <Link to="/privacy-policy">Política de Privacidad</Link>
+              <Link to="/terms-of-service">Términos de Servicio</Link>
+              {/* <Link to="/contact">Contacto</Link> */}
+            </section>
+            <section className="footer-social-section">
+              <h3 className="footer-section-title">Síguenos</h3>
+              {/* Placeholder para íconos de redes sociales (puedes usar componentes de iconos aquí) */}
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </section>
+          </div>
+          <div className="footer-copyright">
+            <p>© {new Date().getFullYear()} English Web. Todos los derechos reservados.</p>
+          </div>
+        </footer>
       </div>
     </div>
   );
