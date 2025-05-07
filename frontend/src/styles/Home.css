@@ -6,19 +6,11 @@ body {
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-}
-
-.overlay {
-    background-color: rgba(255, 255, 255, 0.4); /* Fondo blanco con opacidad */
-    width: 100%;
-    min-height: 100vh;
-    padding: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    box-sizing: border-box;
+    min-height: 100vh;
 }
+
 
 /* ------------------------------------ */
 /* NAVBAR                         */
@@ -118,10 +110,11 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
-    min-height: 100vh;
+    flex-grow: 1; /* Asegura que ocupe al menos la altura de la ventana */
     width: 100%;
     background: linear-gradient(to right, #f0f4ff, #e6f0ff); /* Degradado suave */
     box-sizing: border-box;
+    
 }
 
 /* ------------------------------------ */
@@ -139,7 +132,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     box-sizing: border-box;
-    padding: 0 20px;
+    padding:  20px;
+    
 }
 
 .text-section {
@@ -401,118 +395,4 @@ body {
 /* FOOTER                             */
 /* ------------------------------------ */
 
-.footer {
-    background-color: #333; /* Mismo color de texto principal pero invertido */
-    color: white;
-    padding: 40px 20px;
-    font-size: 16px; /* Un poco más pequeño que el texto principal */
-    line-height: 1.6;
-    text-align: center;
-    width: 100%; /* Asegúrate de que el footer ocupe todo el ancho de su contenedor */
-    box-sizing: border-box; /* Para que el padding no afecte el ancho total */
-}
 
-.footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    max-width: 1200px; /* Mantener el ancho máximo consistente */
-    margin: 0 auto;
-    padding-bottom: 30px;
-    box-sizing: border-box; /* Asegúrate de que el padding no afecte el ancho total */
-}
-
-.footer-logo-section,
-.footer-links-section,
-.footer-legal-section,
-.footer-social-section {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-@media (min-width: 768px) {
-    .footer-logo-section,
-    .footer-links-section,
-    .footer-legal-section,
-    .footer-social-section {
-        margin-bottom: 0;
-    }
-}
-
-.footer-logo-section {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem; /* Mismo gap que el logo principal */
-}
-
-.footer-navbar-logo {
-    height: 30px; /* Ajustar tamaño del logo en el footer */
-    width: auto;
-}
-
-.footer-section-title {
-    font-size: 18px; /* Mismo tamaño que los links de la navbar */
-    font-weight: bold;
-    color: white; /* Texto blanco para el fondo oscuro */
-    margin-bottom: 10px;
-}
-
-.footer-links-section a,
-.footer-legal-section a,
-.footer-social-section a {
-    display: block;
-    color: #ccc; /* Un gris claro para los links */
-    text-decoration: none;
-    margin-bottom: 8px;
-    transition: color 0.3s ease;
-}
-
-.footer-links-section a:hover,
-.footer-legal-section a:hover,
-.footer-social-section a:hover {
-    color: #007bff; /* Mismo color de hover que los links de la navbar */
-}
-
-.footer-social-section a {
-    display: inline-block;
-    margin-right: 15px;
-}
-
-.footer-social-section a:last-child {
-    margin-right: 0;
-}
-
-.footer-copyright {
-    border-top: 1px solid #555;
-    padding-top: 20px;
-    text-align: center;
-    width: 100%; /* Asegúrate de que la sección de copyright también ocupe todo el ancho */
-    box-sizing: border-box; /* Para que el padding no afecte el ancho total */
-}
-
-.footer-copyright p {
-    margin: 0;
-    color: #aaa;
-    font-size: 16px; /* Mismo tamaño que el texto del footer */
-}
-
-/* Media query para pantallas más grandes para alinear mejor las secciones */
-@media (min-width: 992px) {
-    .footer-content {
-        justify-content: space-between;
-    }
-
-    .footer-logo-section,
-    .footer-links-section,
-    .footer-legal-section,
-    .footer-social-section {
-        text-align: left;
-        width: auto;
-    }
-
-    .footer-links-section,
-    .footer-legal-section,
-    .footer-social-section {
-        min-width: 150px;
-    }
-}
