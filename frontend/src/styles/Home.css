@@ -332,6 +332,7 @@ body {
     padding: 4rem 2rem;
     background-color: #f9f9f9; /* Un tono ligeramente más claro que el fondo de beneficios */
     text-align: center;
+    margin-top: 4rem;
 }
 
 .spaced-repetition-container {
@@ -356,40 +357,9 @@ body {
     margin-left: auto;
     margin-right: auto;
     max-width: 800px; /* Limitar el ancho del texto para mejor lectura */
+    
 }
 
-.spaced-repetition-benefits {
-    background-color: white;
-    padding: 2rem; /* Mismo padding que las tarjetas de beneficios */
-    border-radius: 12px; /* Mismo radio de borde que las tarjetas de beneficios */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Misma sombra que las tarjetas de beneficios */
-    margin-bottom: 1.5rem;
-    text-align: left;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.spaced-repetition-benefits h3 {
-    font-size: 2rem; /* Un poco más pequeño que el título principal de la sección */
-    color: #333; /* Mismo color que otros subtítulos */
-    margin-top: 0;
-    margin-bottom: 1rem;
-    font-weight: bold;
-}
-
-.spaced-repetition-benefits ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-
-.spaced-repetition-benefits li {
-    color: black; /* Mismo color que el texto principal */
-    font-size: 20px; /* Mismo tamaño que el texto principal */
-    line-height: 1.6;
-    margin-bottom: 0.5rem;
-    font-weight: bold; /* Destacar los beneficios */
-}
 
 /* ------------------------------------ */
 /* FOOTER                             */

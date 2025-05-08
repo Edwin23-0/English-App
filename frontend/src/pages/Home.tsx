@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Lottie from "lottie-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useNavigate } from "react-router-dom";
 
 import "./../styles/Home.css";
 import englishAnimation from "../assets/animation.json";
@@ -31,10 +32,23 @@ const Home: React.FC = () => {
     }
   }, []);
 
+  const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("user");
     setUser(null);
+    navigate("/"); // o navigate("/")
   };
+
+  
+  const handleStartClick = () => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      navigate("/learning");
+    } else {
+      navigate("/login");
+    }
+  };
+  
 
   return (
     <div className="home-container">
@@ -68,9 +82,9 @@ const Home: React.FC = () => {
               Improve your vocabulary with our intelligent spaced repetition system.
             </p>
 
-            <Link to="/learning">
-              <button className="start-btn">Start Learning</button>
-            </Link>
+            <button className="start-btn" onClick={handleStartClick}>
+              Start Learning
+             </button>
           </div>
 
           <div className="app-logo">
@@ -127,32 +141,12 @@ const Home: React.FC = () => {
         {/* ================================================================== */}
         <section className="spaced-repetition-explanation" data-aos="fade-up">
           <div className="spaced-repetition-container">
-            <h2>¿Qué es la Repetición Espaciada?</h2>
+            <h2>What is <span className="highlight">Spaced Repetition?</span></h2>
             <p>
-              La <span className="highlight">repetición espaciada</span> es una técnica de aprendizaje basada en la evidencia que incrementa los intervalos de tiempo entre las revisiones posteriores del material aprendido previamente para explotar el efecto de espaciado.
+              <span className="highlight">Spaced Repetition</span> is an evidence-based learning technique that increases the time intervals between subsequent reviews of previously learned material to exploit the spacing effect. Rather than reviewing information over and over again in a short period of time, spaced repetition schedules reviews at increasing intervals. This takes advantage of the way our memory naturally works, strengthening neural connections each time we successfully record the information after a longer interval.
             </p>
             <p>
-              En lugar de repasar la información una y otra vez en un corto período de tiempo, la repetición espaciada programa las revisiones en intervalos crecientes. Esto aprovecha la forma en que nuestra memoria funciona naturalmente, fortaleciendo las conexiones neuronales cada vez que recordamos la información con éxito después de un intervalo más largo.
-            </p>
-            <div className="spaced-repetition-benefits">
-              <h3>Beneficios Clave:</h3>
-              <ul>
-                <li>
-                  <span className="highlight">Mayor Retención:</span> Recuerda la información por más tiempo.
-                </li>
-                <li>
-                  <span className="highlight">Aprendizaje Eficiente:</span> Dedica tu tiempo a repasar lo que realmente necesitas recordar.
-                </li>
-                <li>
-                  <span className="highlight">Menos Agotamiento:</span> Las sesiones de estudio son más cortas y efectivas.
-                </li>
-                <li>
-                  <span className="highlight">Comprensión Profunda:</span> Al forzar la recuperación de la memoria, se fortalece la comprensión.
-                </li>
-              </ul>
-            </div>
-            <p>
-              <span className="highlight">English Web</span> utiliza un algoritmo inteligente de repetición espaciada para optimizar tus sesiones de aprendizaje de vocabulario, asegurando que repases las palabras justo en el momento adecuado para una máxima retención.
+            Instead of reviewing information over and over again in a short period of time, spaced repetition schedules reviews at increasing intervals. This takes advantage of the way our memory naturally works, strengthening neural connections each time we successfully recall information after a longer interval.
             </p>
           </div>
         </section>
