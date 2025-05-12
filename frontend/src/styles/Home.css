@@ -362,7 +362,89 @@ body {
 
 
 /* ------------------------------------ */
-/* FOOTER                             */
+/* zic zac                             */
 /* ------------------------------------ */
+
+
+
+
+
+
+.how-it-works h2 {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.step-card {
+    display: flex;
+    justify-content: center;
+}
+
+.step-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    background: #f5f5f5;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    gap: 2rem;
+}
+
+.step-card:hover .step-content {
+    transform: translateY(-5px);
+}
+
+.step-content.reverse {
+    flex-direction: row-reverse;
+}
+
+.step-text {
+    flex: 1;
+    min-width: 300px;
+    text-align: left;
+}
+
+.step-text h3 {
+     font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.step-text p {
+  color: black;
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+}
+
+.step-image {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+.step-image img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
 
 

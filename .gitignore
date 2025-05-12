@@ -1,10 +1,20 @@
+# Node
 node_modules/
-.env
-.DS_Store
 dist/
 build/
 .cache/
 *.log
-/__pycache__
-/package-lock.json
-/package.json
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.env
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Frontend config
+package-lock.json
+package.json

@@ -150,9 +150,52 @@ const Home: React.FC = () => {
             </p>
           </div>
         </section>
-        </div>
 
-        
+<section className="how-it-works" data-aos="fade-up">
+  <h2>How does it work?</h2>
+
+  <div className="steps-container">
+    <div className="step-card">
+      <div className="step-content">
+        <div className="step-text">
+          <h3>Step 1: Learn new words</h3>
+          <p>Every day, discover new vocabulary with engaging visuals and real-life examples that help you understand and remember better.</p>
+        </div>
+        <div className="step-image">
+          <img src="/images/step1.png" alt="Step 1" />
+        </div>
+      </div>
+    </div>
+
+    <div className="step-card reverse">
+      <div className="step-content">
+        <div className="step-image">
+          <img src="/images/step2.png" alt="Step 2" />
+        </div>
+        <div className="step-text">
+          <h3>Step 2: Review smartly</h3>
+          <p>Our algorithm brings back words when you're about to forget them. This strengthens memory and avoids repetition overload.</p>
+        </div>
+      </div>
+    </div>
+
+    <div className="step-card">
+      <div className="step-content">
+        <div className="step-text">
+          <h3>Step 3: Master & Retain</h3>
+          <p>Once you consistently recall words, they appear less often, so you focus only on what matters — the words you need most.</p>
+        </div>
+        <div className="step-image">
+          <img src="/images/step3.png" alt="Step 3" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+        </div>
+     
   );
 };
 
