@@ -14,7 +14,9 @@ import cameraIcon from "../assets/camera.svg";
 import algorithmIcon from "../assets/algoritmo.svg";
 import clockIcon from "../assets/clock.svg";
 import eyeIcon from "../assets/eye.svg";
-
+import graficIcon from "../assets/grafic.png";
+import forgettingIcon from "../assets/Forgetting.png";
+import brainIcon from "../assets/brain.png"
 const Home: React.FC = () => {
   const [user, setUser] = useState<{ nombre: string } | null>(null);
 
@@ -152,17 +154,17 @@ const Home: React.FC = () => {
         </section>
 
 <section className="how-it-works" data-aos="fade-up">
-  <h2>How does it work?</h2>
+  <h2>How does <span className="highlight">it work</span></h2>
 
   <div className="steps-container">
     <div className="step-card">
       <div className="step-content">
         <div className="step-text">
-          <h3>Step 1: Learn new words</h3>
-          <p>Every day, discover new vocabulary with engaging visuals and real-life examples that help you understand and remember better.</p>
+          <h3><span className="highlight">Step 1: </span> Learn new words</h3>
+          <p>This method ensures that you review information you are about to forget more frequently, while information you remember well is reviewed less frequently.</p>
         </div>
         <div className="step-image">
-          <img src="/images/step1.png" alt="Step 1" />
+          <img src={graficIcon} alt="Step 1" />
         </div>
       </div>
     </div>
@@ -170,11 +172,11 @@ const Home: React.FC = () => {
     <div className="step-card reverse">
       <div className="step-content">
         <div className="step-image">
-          <img src="/images/step2.png" alt="Step 2" />
+          <img src={forgettingIcon} alt="Step 2" />
         </div>
         <div className="step-text">
-          <h3>Step 2: Review smartly</h3>
-          <p>Our algorithm brings back words when you're about to forget them. This strengthens memory and avoids repetition overload.</p>
+          <h3><span className="highlight">Step 2: </span>  Review smartly</h3>
+          <p>The forgetting curve and how spaced repetition helps counteract it and the importance of implementing it daily</p>
         </div>
       </div>
     </div>
@@ -182,11 +184,11 @@ const Home: React.FC = () => {
     <div className="step-card">
       <div className="step-content">
         <div className="step-text">
-          <h3>Step 3: Master & Retain</h3>
+          <h3><span className="highlight">Step 3: </span>  Master & Retain</h3>
           <p>Once you consistently recall words, they appear less often, so you focus only on what matters — the words you need most.</p>
         </div>
         <div className="step-image">
-          <img src="/images/step3.png" alt="Step 3" />
+          <img src={brainIcon}alt="Step 3" />
         </div>
       </div>
     </div>
