@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "./../styles/Learning.css";
 
 
 const USER_ID = 1; // Cambiar según el usuario logueado
@@ -51,21 +52,21 @@ const Learning = () => {
   const cargarPalabras = async () => {
     setLoading(true);
     try {
-      let res;
-      if (cantidadMostrar === -1) {
-        // Traer todas las palabras sin filtrar
-        res = await axios.get(`http://localhost:5000/palabras/todas/${USER_ID}`);
-        setCantidadMostrar(res.data.length);
-      } else {
-        // Traer solo pendientes según repetición
-        res = await axios.get(`http://localhost:5000/palabras/pendientes/${USER_ID}`, {
-          params: {
-            limite: cantidadTotal ?? 50,
-            ver: cantidadMostrar ?? 10,
-          },
-        });
-      }
+  let res;
 
+  if (cantidadMostrar === -1) {
+    // Traer todas las palabras sin filtrar
+    res = await axios.get(`http://localhost:5000/palabras/todas/${USER_ID}`);
+    setCantidadMostrar(res.data.length); // Establece la cantidad total
+  } else {
+    // Traer solo pendientes según repetición
+    res = await axios.get(`http://localhost:5000/palabras/pendientes/${USER_ID}`, {
+      params: {
+        limite: cantidadTotal ?? 50,  // Total a seleccionar del backend
+        ver: cantidadMostrar ?? 10,   // Cantidad de palabras a mostrar al usuario
+      },
+    });
+  }
       const palabrasObtenidas: Palabra[] = res.data;
       setListaPalabras(palabrasObtenidas);
 
@@ -116,9 +117,10 @@ const Learning = () => {
 
   // ------------------ RENDERS ------------------
 
-  if (paso === 1) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-yellow-100 p-6">
+ if (paso === 1) {
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-blue-50 p-6">
+      <div className="bg-white shadow-xl rounded-2xl p-6 max-w-md w-full text-center">
         <h2 className="text-2xl font-bold mb-4">¿Cuántas palabras deseas aprender hoy?</h2>
         <div className="space-x-2">
           <button onClick={() => { setCantidadTotal(50); setPaso(2); }} className="bg-blue-500 text-white px-4 py-2 rounded-full">50</button>
@@ -126,8 +128,10 @@ const Learning = () => {
           <button onClick={() => { setCantidadTotal(200); setPaso(2); }} className="bg-blue-500 text-white px-4 py-2 rounded-full">200</button>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
+
 
   if (paso === 2) {
     return (
@@ -154,18 +158,22 @@ const Learning = () => {
   }
   
 
-  if (loading) return <div className="text-center mt-10 text-lg text-gray-600">⏳ Cargando palabra...</div>;
+  if (loading) return (
+  <div className="flex items-center justify-center min-h-screen text-lg text-gray-600">
+    ⏳ Cargando palabra...
+  </div>
+);
 
   if (!palabra) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen text-center p-6 bg-green-50">
         <h2 className="text-3xl font-bold text-green-600 mb-2">🎉 ¡Felicidades!</h2>
         <p className="text-lg text-gray-700">Has repasado todas las palabras por ahora. Vuelve más tarde para seguir practicando.</p>
-        <button 
+<button 
   onClick={() => {
     setListaPalabras([]);
     setContador(0);
-    setReiniciarPaso2(prev => prev + 1); // fuerza reinicio de paso 2
+    setReiniciarPaso2(prev => prev + 1);
     setPaso(2);
   }} 
   className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-full"
@@ -173,26 +181,26 @@ const Learning = () => {
   Volver al inicio
 </button>
 
+
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-yellow-50 p-4">
-      <div className="bg-white shadow-xl rounded-2xl p-6 max-w-md w-full text-center">
-        <p className="text-sm text-gray-500 mb-2">
-          Palabra {contador + 1} de {cantidadMostrar}
-        </p>
-        <img src={palabra.imagen_url} alt="imagen palabra" className="w-full h-64 object-cover rounded-xl mb-4" />
-
-        {!mostrarPalabra ? (
-          <button onClick={() => setMostrarPalabra(true)} className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full transition">
-            Revelar palabra
-          </button>
-        ) : (
-          <div>
-            <h2 className="text-2xl font-bold mt-2">{palabra.palabra_en}</h2>
-            <p className="text-lg text-gray-600">{palabra.palabra_es}</p>
+  <div className="flex flex-col items-center justify-center min-h-screen bg-yellow-50 p-4">
+    <div className="bg-white shadow-xl rounded-2xl p-6 max-w-md w-full text-center">
+      <p className="text-sm text-gray-500 mb-2">
+        Palabra {contador + 1} de {cantidadMostrar}
+      </p>
+      <img src={palabra.imagen_url} alt="imagen palabra" className="image" />
+{!mostrarPalabra ? (
+  <button onClick={() => setMostrarPalabra(true)} className="revealButton">
+    Revelar palabra
+  </button>
+) : (
+  <div>
+    <h2 className="text-2xl font-bold mt-2">{palabra.palabra_en}</h2>
+    <p className="text-lg text-gray-600">{palabra.palabra_es}</p>
 
             <div className="mt-4 space-x-2">
               <button onClick={() => enviarRespuesta("fácil")} className="bg-green-400 hover:bg-green-500 text-white py-2 px-4 rounded-full">Fácil</button>

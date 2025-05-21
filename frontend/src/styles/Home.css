@@ -297,12 +297,13 @@ body {
 }
 
 .benefitCards {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
     gap: 2rem;
+    justify-items: center;
     margin-bottom: 3rem;
 }
+
 
 .card {
     background: white;
@@ -446,5 +447,3 @@ body {
     border-radius: 10px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
-
-
